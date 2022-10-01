@@ -1,0 +1,65 @@
+// -----=== Common ===-----
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f5f5f5;
+  color: #343737;
+  font-family: 'Roboto', -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+// -----=== /Common ===-----
+
+// -----=== Login ===-----
+.login {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 350px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+
+  input {
+    width: 230px;
+  }
+
+  button {
+    margin-top: 20px;
+    width: 50%;
+    height: 40px;
+  }
+}
+// -----=== /Login ===-----
+
+// -----=== Header ===-----
+.header {
+  margin-bottom: 50px;
+  padding: 20px 0;
+  background-color: #fff;
+  border-bottom: 1px solid #e0e0e0;
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__buttons {
+    button:first-child {
+      margin-right: 20px;
+    }
+  }
+}
+// -----=== /Header ===-----
