@@ -9,8 +9,13 @@ import LogoutIcon from '@mui/icons-material/Logout';
 
 import { RootState } from '../redux/store';
 import { logout } from '../redux/slices/user/slice';
+import { PopupSliceState } from '../redux/slices/popup/types';
 
-export const Header: React.FC = () => {
+type HeaderProps = {
+  onSetPopup: (obj: PopupSliceState) => void;
+};
+
+export const Header: React.FC<HeaderProps> = ({ onSetPopup }) => {
   const dispatch = useDispatch();
   const { name } = useSelector((state: RootState) => state.user);
 
@@ -24,7 +29,10 @@ export const Header: React.FC = () => {
             <Typography variant="h6">Привет, {name}</Typography>
           </div>
           <div className="header__buttons">
-            <Button variant="contained" endIcon={<AddIcon />}>
+            <Button
+              onClick={() => onSetPopup({ isOpen: true, isEditMode: false, id: null })}
+              variant="contained"
+              endIcon={<AddIcon />}>
               Создать Контакт
             </Button>
             <Button onClick={onLogout} variant="outlined" endIcon={<LogoutIcon />}>

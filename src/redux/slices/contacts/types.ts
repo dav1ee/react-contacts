@@ -8,5 +8,5 @@ export type ContactType = {
   firstName: string;
   lastName: string;
   email: string;
-  phoneNumber: number;
+  phoneNumber: string;
 };
