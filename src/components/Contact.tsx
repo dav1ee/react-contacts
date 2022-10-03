@@ -1,5 +1,4 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
@@ -7,19 +6,24 @@ import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
+import { useAppDispatch } from '../redux/store';
 import { setPopup } from '../redux/slices/popup/slice';
-import { deleteContact } from '../redux/slices/contacts/slice';
+import { deleteContactAC } from '../redux/slices/contacts/slice';
+import { deleteContact } from '../redux/slices/contacts/asyncActions';
 import { ContactType } from '../redux/slices/contacts/types';
 
 export const Contact: React.FC<ContactType> = ({ id, firstName, lastName, email, phoneNumber }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const onSetPopup = () => {
     const obj = { isOpen: true, isEditMode: true, id };
     dispatch(setPopup(obj));
   };
 
-  const onDeleteContact = () => dispatch(deleteContact(id));
+  const onDeleteContact = () => {
+    dispatch(deleteContact(id));
+    dispatch(deleteContactAC(id));
+  };
 
   return (
     <TableRow>

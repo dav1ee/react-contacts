@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
@@ -11,11 +11,9 @@ import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
 import EditIcon from '@mui/icons-material/Edit';
 
-import {
-  createContact,
-  updateContact,
-  getContactByIdSelector,
-} from '../redux/slices/contacts/slice';
+import { useAppDispatch } from '../redux/store';
+import { getContactByIdSelector } from '../redux/slices/contacts/slice';
+import { createContact, updateContact } from '../redux/slices/contacts/asyncActions';
 import { PopupSliceState } from '../redux/slices/popup/types';
 
 type PopupProps = PopupSliceState & {
@@ -23,7 +21,7 @@ type PopupProps = PopupSliceState & {
 };
 
 export const Popup: React.FC<PopupProps> = ({ isOpen, isEditMode, id, onSetPopup }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const [formValues, setFormValues] = React.useState({
     firstName: '',
@@ -46,7 +44,7 @@ export const Popup: React.FC<PopupProps> = ({ isOpen, isEditMode, id, onSetPopup
         phoneNumber: formValues.phoneNumber,
       };
 
-      dispatch(updateContact(contact));
+      dispatch(updateContact({ id, contact }));
     } else {
       const contact = {
         id: new Date().getMilliseconds() * 10,

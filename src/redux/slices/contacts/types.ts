@@ -1,6 +1,8 @@
 export type ContactsSliceState = {
   items: ContactType[];
   totalCount: number;
+  status: Status;
+  error: string;
 };
 
 export type ContactType = {
@@ -10,3 +12,9 @@ export type ContactType = {
   email: string;
   phoneNumber: string;
 };
+
+export enum Status {
+  LOADING = 'loading',
+  SUCCESS = 'success',
+  ERROR = 'error',
+}

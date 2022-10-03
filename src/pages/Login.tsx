@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
+import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import LoginIcon from '@mui/icons-material/Login';
@@ -19,6 +20,7 @@ const Login: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit} className="login">
+      <Typography variant="h6">Авторизация</Typography>
       <TextField
         value={formValues.name}
         onChange={(e) => setFormValues({ ...formValues, name: e.target.value })}
