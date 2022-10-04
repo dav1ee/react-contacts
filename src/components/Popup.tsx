@@ -122,6 +122,7 @@ export const Popup: React.FC<PopupProps> = ({ isOpen, isEditMode, id, onSetPopup
               onChange={(e) => setFormValues({ ...formValues, phoneNumber: e.target.value })}
               label="Телефон"
               margin="normal"
+              placeholder="71234567890"
               required
             />
             {isEditMode ? (

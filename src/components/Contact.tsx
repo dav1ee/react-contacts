@@ -11,9 +11,11 @@ import { setPopup } from '../redux/slices/popup/slice';
 import { deleteContactAC } from '../redux/slices/contacts/slice';
 import { deleteContact } from '../redux/slices/contacts/asyncActions';
 import { ContactType } from '../redux/slices/contacts/types';
+import { getFormattedPhoneNumber } from '../utils/getFormattedPhoneNumber';
 
 export const Contact: React.FC<ContactType> = ({ id, firstName, lastName, email, phoneNumber }) => {
   const dispatch = useAppDispatch();
+  const formattedPhone = getFormattedPhoneNumber(phoneNumber);
 
   const onSetPopup = () => {
     const obj = { isOpen: true, isEditMode: true, id };
@@ -30,7 +32,7 @@ export const Contact: React.FC<ContactType> = ({ id, firstName, lastName, email,
       <TableCell align="center">{firstName}</TableCell>
       <TableCell align="center">{lastName}</TableCell>
       <TableCell align="center">{email}</TableCell>
-      <TableCell align="center">{phoneNumber}</TableCell>
+      <TableCell align="center">{formattedPhone}</TableCell>
       <TableCell align="center" sx={{ width: '170px' }}>
         <IconButton onClick={onSetPopup} color="primary" sx={{ mr: 2 }}>
           <EditIcon />

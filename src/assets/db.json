@@ -1,11 +1,18 @@
 {
   "contacts": [
     {
-      "id": 8440,
+      "id": 7250,
       "firstName": "Тест",
       "lastName": "Тест",
-      "email": "тест@test.com",
-      "phoneNumber": "1234567890"
+      "email": "test@test.com",
+      "phoneNumber": "71234567890"
+    },
+    {
+      "id": 3220,
+      "firstName": "Имя",
+      "lastName": "Фамилия",
+      "email": "name@name.com",
+      "phoneNumber": "78005553535"
     }
   ]
 }

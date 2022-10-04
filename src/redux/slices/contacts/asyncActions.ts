@@ -5,9 +5,13 @@ import { ContactType } from './types';
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchContacts',
-  async (_, { rejectWithValue }) => {
+  async (search: string, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get<ContactType[]>('http://localhost:3001/contacts');
+      const { data } = await axios.get<ContactType[]>(
+        search.length > 0
+          ? `http://localhost:3001/contacts?firstName=${search}`
+          : 'http://localhost:3001/contacts',
+      );
 
       return data;
     } catch (err) {
